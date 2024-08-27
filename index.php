@@ -7,24 +7,10 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous"></head>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 <body>
-    <div class="container">
-      <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
-        <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
-          <span class="fs-4">ร้านอาหารแถวบ้าน</span>
-        </a>
 
-        <ul class="nav nav-pills">
-          <li class="nav-item"><a href="#" class="nav-link" aria-current="page">Home</a></li>
-          <li class="nav-item"><a href="" class="nav-link">เพิ่มร้าน</a></li>
-          <li class="nav-item"><a href="#" class="nav-link">About</a></li>
-        </ul>
-      </header>
-</div>
+  <?php require_once("components/navbar.php"); ?>
 
-
-
-  <main>
-
+<main>
   <section class="py-5 text-center container">
     <div class="col-md-5 mx-auto">
         <div class="input-group">
@@ -186,8 +172,7 @@
 </main>
 
 
-
-
+    <?php require_once("components/footer.php"); ?>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
 </html>

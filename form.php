@@ -8,8 +8,11 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 </head>
 <body>
-    <div class="container">
-        <form method="post">
+
+    <?php require_once("components/navbar.php"); ?>
+    <div class="container mt-5">
+        <h1>ฟอร์มเพิ่มร้านอาหาร</h1>
+        <form method="post" action="save.php">
             <div class="mb-3">
                 <label class="form-label">ชื่อร้าน</label>
                 <input type="text" class="form-control" placeholder="ชื่อร้านอาหาร"  name="restaurant">
@@ -27,13 +30,17 @@
 
             <div class="mb-3">
                 <label class="form-label">ตำแหน่งร้าน</label>
-                <textarea class="form-control"></textarea>
+                <textarea class="form-control" name="detail"></textarea>
             </div>
+
+            <button class="btn btn-primary">ส่งข้อมูล</button>
         </form>
 
 
 
     </div>
+
+    <?php require_once("components/footer.php"); ?>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 
