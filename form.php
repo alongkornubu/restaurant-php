@@ -1,3 +1,15 @@
+<?php
+require_once("helpers/db.php");
+
+$sql = "INSERT INTO restaurants (title,time,tel,detail) VALUES ('ร้านแม่นวย','07.00-16.00','087','ร้านนี้ใกล้วัดบ้านหนองหลัก');";
+$result = mysqli_query($conn,$sql);
+var_dump($result);
+
+mysqli_close($conn);
+?>
+
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,10 +21,11 @@
 </head>
 <body>
 
+
     <?php require_once("components/navbar.php"); ?>
     <div class="container mt-5">
         <h1>ฟอร์มเพิ่มร้านอาหาร</h1>
-        <form method="post" action="save.php">
+        <form method="post">
             <div class="mb-3">
                 <label class="form-label">ชื่อร้าน</label>
                 <input type="text" class="form-control" placeholder="ชื่อร้านอาหาร"  name="restaurant">
@@ -20,7 +33,7 @@
 
             <div class="mb-3">
                 <label class="form-label">เวลาเปิด-ปิด</label>
-                <input type="time" class="form-control" name="time">
+                <input type="text" class="form-control" name="time">
             </div>
 
             <div class="mb-3">
