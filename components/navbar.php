@@ -5,7 +5,7 @@
         </a>
 
         <ul class="nav nav-pills">
-          <li class="nav-item"><a href="./" class="nav-link" aria-current="page">Home</a></li>
+          <li class="nav-item"><a href="./" class="nav-link" aria-current="page">หน้าแรก</a></li>
           <li class="nav-item"><a href="./form.php" class="nav-link">เพิ่มร้าน</a></li>
           <li class="nav-item"><a href="#" class="nav-link">About</a></li>
         </ul>

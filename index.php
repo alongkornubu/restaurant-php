@@ -55,10 +55,13 @@ if (isset($_GET["search"])) {
         <?php foreach ($rows as $row): ?>
             <div class="col">
               <div class="card shadow-sm">
-                <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
+                <img src="./images/<?php echo $row['image'] ?>" class="bd-placeholder-img card-img-top" width="100%" height="230">
 
                 <div class="card-body">
-                  <p class="card-text"><?php echo $row["title"] ?></p>
+                  <p class="card-text"><i class="bi bi-shop"></i> <?php echo $row["title"] ?></p>
+                  <p class="card-text"><i class="bi bi-clock-fill"></i> <?php echo $row["time"] ?></p>
+                  <p class="card-text"><i class="bi bi-telephone-fill"></i> <?php echo $row["tel"] ?></p>
+                  <p class="card-text"><?php echo $row["detail"] ?></p>
                   <div class="d-flex justify-content-between align-items-center">
                     <div class="btn-group">
                       <button type="button" class="btn btn-sm btn-outline-secondary">View</button>

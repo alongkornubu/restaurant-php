@@ -1,13 +1,21 @@
+<?php require_once("helpers/db.php"); ?>
+
 <?php
-require_once("helpers/db.php");
-
-$sql = "INSERT INTO restaurants (title,time,tel,detail) VALUES ('ร้านแม่นวย','07.00-16.00','087','ร้านนี้ใกล้วัดบ้านหนองหลัก');";
-$result = mysqli_query($conn,$sql);
-var_dump($result);
-
-mysqli_close($conn);
+function createRes($conn) {
+    $title = mysqli_real_escape_string($conn,$_POST["title"]);
+    $time = mysqli_real_escape_string($conn,$_POST["time"]);
+    $tel = mysqli_real_escape_string($conn,$_POST["tel"]);
+    $detail = mysqli_real_escape_string($conn,$_POST["detail"]);
+    // uploadimage
+    $uploadfile = $_FILES["uploadfile"]["name"];
+    $tempname = $_FILES["uploadfile"]["tmp_name"];
+    $folder = "./images/" . $uploadfile;
+    $sql = "INSERT INTO restaurants (title,time,tel,detail,image) VALUES ('$title','$time','$tel','$detail','$uploadfile');";
+    $file = move_uploaded_file($tempname, $folder);
+    return $result = mysqli_query($conn,$sql,$file);
+    // var_dump($result);
+}
 ?>
-
 
 
 <!DOCTYPE html>
@@ -25,29 +33,51 @@ mysqli_close($conn);
     <?php require_once("components/navbar.php"); ?>
     <div class="container mt-5">
         <h1>ฟอร์มเพิ่มร้านอาหาร</h1>
-        <form method="post">
-            <div class="mb-3">
-                <label class="form-label">ชื่อร้าน</label>
-                <input type="text" class="form-control" placeholder="ชื่อร้านอาหาร"  name="restaurant">
-            </div>
+        <?php if($_SERVER['REQUEST_METHOD'] == "POST"): ?>
+            <?php $result = createRes($conn); ?>
+            <?php if($result): ?>
+                <div class="alert alert-primary" role="alert">บันทึกร้านอาหารเรียบร้อย</div>
+                <p>
+                    <a href="./">หน้าแรก</a>
+                </p>
+            <?php else: ?>
+                <div class="alert alert-danger" role="alert">บันทึกร้านอาหารผิดพลาด</div>
+                <?php echo $result ?>
+                <p>
+                    <a href="form.php">เพิ่มร้านอาหารใหม่</a>
+                </p>
 
-            <div class="mb-3">
-                <label class="form-label">เวลาเปิด-ปิด</label>
-                <input type="text" class="form-control" name="time">
-            </div>
+            <?php endif; ?>
+        <?php else: ?>
+            <form method="post" enctype="multipart/form-data">
+                <div class="mb-3">
+                    <label class="form-label">ชื่อร้าน</label>
+                    <input type="text" class="form-control" placeholder="ชื่อร้านอาหาร"  name="title">
+                </div>
 
-            <div class="mb-3">
-                <label class="form-label">เบอร์โทร</label>
-                <input type="number" class="form-control" name="tel">
-            </div>
+                <div class="mb-3">
+                    <label class="form-label">เวลาเปิด-ปิด</label>
+                    <input type="text" class="form-control"  name="time">
+                </div>
 
-            <div class="mb-3">
-                <label class="form-label">ตำแหน่งร้าน</label>
-                <textarea class="form-control" name="detail"></textarea>
-            </div>
+                <div class="mb-3">
+                    <label class="form-label">เบอร์โทร</label>
+                    <input type="number" class="form-control"   name="tel">
+                </div>
 
-            <button class="btn btn-primary">ส่งข้อมูล</button>
-        </form>
+                <div class="mb-3">
+                    <label class="form-label">ตำแหน่งร้าน</label>
+                    <textarea class="form-control" name="detail"></textarea>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">รูปภาพ</label>
+                    <input type="file" class="form-control" name="uploadfile">
+                </div>
+
+                <button class="btn btn-primary">ส่งข้อมูล</button>
+            </form>
+        <?php endif; ?>
 
 
 
@@ -59,3 +89,5 @@ mysqli_close($conn);
 
 </body>
 </html>
+
+<?php mysqli_close($conn); ?>
