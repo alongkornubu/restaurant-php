@@ -1,4 +1,4 @@
-<?php require_once("helpers/db.php") ?>
+<?php require_once("helpers/db.php"); ?>
 <?php
 function getRes($conn) {
     $sql = "SELECT * FROM restaurants ";
@@ -25,7 +25,7 @@ if (isset($_GET["search"])) {
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title><?php echo $searchTitle ?> Restaurant </title>
+    <title><?php echo $searchTitle ?>Home | Restaurant </title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous"></head>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" type="text/css" href="./static/style.css">
@@ -41,7 +41,8 @@ if (isset($_GET["search"])) {
           <div class="input-group rounded">
             <input type="search" class="form-control rounded" placeholder="ร้านอาหาร" name="search" value="<?php echo $searchValue; ?>">
             <button class="btn btn-primary">
-              <i class="bi bi-search"></i>
+              <!-- <i class="bi bi-search"></i> -->
+              ค้นหา
             </button>
           </div>
         </form>
@@ -55,7 +56,7 @@ if (isset($_GET["search"])) {
         <?php foreach ($rows as $row): ?>
             <div class="col">
               <div class="card shadow-sm">
-                <img src="./images/<?php echo $row['image'] ?>" class="bd-placeholder-img card-img-top" width="100%" height="230">
+                <img src="./images/<?php echo $row['image'] ?>" class="rounded" width="100%" height="230">
 
                 <div class="card-body">
                   <p class="card-text"><i class="bi bi-shop"></i> <?php echo $row["title"] ?></p>

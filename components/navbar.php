@@ -7,7 +7,10 @@
         <ul class="nav nav-pills">
           <li class="nav-item"><a href="./" class="nav-link" aria-current="page">หน้าแรก</a></li>
           <li class="nav-item"><a href="./form.php" class="nav-link">เพิ่มร้าน</a></li>
-          <li class="nav-item"><a href="#" class="nav-link">About</a></li>
+          <li class="nav-item"><a href="./login.php" class="nav-link">เข้าสู่ระบบ</a></li>
+          <li class="nav-item"><a href="./signup.php" class="nav-link">ลงทะเบียน</a></li>
+          <li class="nav-item"><a href="./about.php" class="nav-link">About</a></li>
+
         </ul>
       </header>
 </div>
